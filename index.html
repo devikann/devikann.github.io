@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devika N N | AI & ML Engineer</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0b0f19;   
+            --card-bg: rgba(21, 28, 44, 0.6); 
+            --accent-color: #f59e0b; 
+            --accent-glow: rgba(245, 158, 11, 0.4);
+            --text-main: #f8fafc;    
+            --text-secondary: #94a3b8; 
+            --primary-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #d97706 100%);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        html { scroll-behavior: smooth; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            overflow-x: hidden; 
+        }
+
+        /* --- DYNAMIC BACKGROUND MESH --- */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(245, 158, 11, 0.05), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(56, 189, 248, 0.05), transparent 30%);
+            z-index: -1;
+        }
+
+        /* --- CURSOR TRAIL --- */
+        .trail-particle { position: absolute; background: var(--accent-color); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); animation: fadeOut 0.8s ease-out forwards; box-shadow: 0 0 12px var(--accent-color); z-index: 9999; }
+        @keyframes fadeOut { 0% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); } 100% { opacity: 0; transform: translate(-50%, -80px) scale(0); } }
+
+        /* --- HEADER & HERO --- */
+        header { text-align: center; padding: 120px 20px 60px; }
+        .profile-container { position: relative; display: inline-block; }
+        header img { 
+            width: 200px; height: 200px; border-radius: 50%; 
+            border: 4px solid var(--bg-color); 
+            object-fit: cover; 
+            box-shadow: 0 0 0 3px var(--accent-color);
+            transition: transform 0.5s ease;
+        }
+        header img:hover { transform: scale(1.05) rotate(2deg); }
+        
+        header h1 { 
+            font-size: 3.8rem; margin: 30px 0 10px; 
+            background: var(--primary-gradient); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+        header p { font-size: 1.4rem; color: var(--accent-color); font-weight: 500; letter-spacing: 1px; }
+
+        /* --- BUTTONS --- */
+        .btn { 
+            display: inline-flex; align-items: center; gap: 10px;
+            margin-top: 30px; padding: 14px 35px; 
+            background: var(--primary-gradient); 
+            color: #000; text-decoration: none; 
+            border-radius: 50px; font-weight: 700; 
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px -10px var(--accent-glow);
+        }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px -10px var(--accent-glow); color: #000; }
+
+        /* --- SECTIONS --- */
+        .container { max-width: 1000px; margin: auto; padding: 0 20px 100px; }
+        .section { 
+            background: var(--card-bg); 
+            backdrop-filter: blur(15px); 
+            border: 1px solid var(--glass-border); 
+            padding: 50px; margin-bottom: 50px; 
+            border-radius: 24px; 
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); 
+        }
+        h2 { 
+            color: #fff; font-size: 1.8rem; 
+            border-bottom: 2px solid var(--accent-color); 
+            padding-bottom: 12px; margin-bottom: 35px; 
+            display: inline-flex; align-items: center; gap: 15px;
+        }
+
+        /* --- PROJECTS --- */
+        .project { 
+            padding: 30px; border-radius: 18px; 
+            background: rgba(255, 255, 255, 0.03); 
+            margin-bottom: 25px; border: 1px solid var(--glass-border);
+            transition: 0.4s;
+        }
+        .project:hover { 
+            background: rgba(255, 255, 255, 0.06); 
+            border-color: var(--accent-color); 
+            transform: scale(1.02); 
+        }
+        .project-title { font-size: 1.5rem; font-weight: 600; color: #fff; }
+        .tech-tag { 
+            background: rgba(245, 158, 11, 0.1); 
+            color: var(--accent-color); 
+            padding: 6px 14px; border-radius: 50px; 
+            font-size: 0.8rem; margin: 15px 8px 15px 0; 
+            display: inline-block; border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        /* --- VOLUNTEERING SCROLL --- */
+        .horizontal-scroll { display: flex; gap: 25px; overflow-x: auto; padding: 10px 0 25px; }
+        .vol-card { 
+            background: rgba(255, 255, 255, 0.03); 
+            border-radius: 18px; min-width: 320px; flex: 0 0 auto; 
+            overflow: hidden; border: 1px solid var(--glass-border); 
+            transition: 0.3s;
+        }
+        .vol-card:hover { transform: translateY(-10px); border-color: var(--accent-color); }
+        .vol-img { width: 100%; height: 220px; object-fit: cover; }
+        .vol-content { padding: 20px; }
+        .vol-content h3 { margin: 0 0 10px; color: #fff; }
+
+        /* --- FOOTER --- */
+        footer { 
+            text-align: center; padding: 60px 0; 
+            border-top: 1px solid var(--glass-border); 
+            color: var(--text-secondary); 
+        }
+        footer a { color: var(--accent-color); text-decoration: none; font-weight: 600; }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar { width: 10px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-color); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="profile-container">
+            <img src="Devika.jpeg" alt="Devika N N">
+        </div>
+        <h1>Devika N N</h1>
+        <p>AI & Machine Learning Engineer</p>
+        <a href="Devika_NN_Resume.pdf" class="btn">
+            <i class="fas fa-file-download"></i> Download Resume
+        </a>
+    </header>
+
+    <div class="container">
+        
+        <div class="section">
+            <h2><i class="fas fa-id-badge"></i> Professional Summary</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Aspiring <strong>Machine Learning Engineer</strong> with hands-on experience in <strong>computer vision, deep learning, and real-time AI systems</strong>[cite: 55, 56]. 
+                Focused on building intelligent solutions at <strong>Adi Shankara Institute</strong> with a current <strong>CGPA of 7.04</strong>[cite: 57, 63].
+            </p>
+            <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="background: rgba(56, 189, 248, 0.1); color: #38bdf8; padding: 10px 20px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.2); font-weight: 600;">PyTorch & OpenCV</div>
+                <div style="background: rgba(168, 85, 247, 0.1); color: #a855f7; padding: 10px 20px; border-radius: 12px; border: 1px solid rgba(168, 85, 247, 0.2); font-weight: 600;">FastAPI & Flask</div>
+                <div style="background: rgba(245, 158, 11, 0.1); color: var(--accent-color); padding: 10px 20px; border-radius: 12px; border: 1px solid rgba(245, 158, 11, 0.2); font-weight: 600;">NLP & Gemini AI</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-terminal"></i> Professional Journey</h2>
+            <div class="project">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                        <div class="project-title">RPA Intern</div>
+                        <div style="color: #38bdf8; font-weight: 600; margin-top: 5px;">Pearl Data Direct</div>
+                    </div>
+                    <div style="color: var(--accent-color); font-size: 0.9rem; font-weight: 700;">2025</div>
+                </div>
+                <p style="margin-top: 15px;">Developed automated AI workflows for eKYC document processing and background removal[cite: 68].</p>
+            </div>
+            <div class="project">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                    <div>
+                        <div class="project-title">Python & Django Intern</div>
+                        <div style="color: #38bdf8; font-weight: 600; margin-top: 5px;">Facein Technologies</div>
+                    </div>
+                    <div style="color: var(--accent-color); font-size: 0.9rem; font-weight: 700;">2024</div>
+                </div>
+                <p style="margin-top: 15px;">Built scalable web backends with integrated REST APIs and secure database logic[cite: 71].</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-layer-group"></i> Featured Projects</h2>
+            
+            <div class="project">
+                <div class="project-title">Smart Neonatal Incubator</div>
+                <span class="tech-tag">FastAPI</span><span class="tech-tag">React</span><span class="tech-tag">Librosa</span>
+                <p>AI-IoT framework detecting <strong>jaundice and infant distress</strong> through audio/video analysis[cite: 29, 30].</p>
+            </div>
+
+            <div class="project">
+                <div class="project-title">ID Card Background Remover</div>
+                <span class="tech-tag">U²-Net</span><span class="tech-tag">F1: 0.99</span><span class="tech-tag">PyTorch</span>
+                <p>Achieved high-precision document segmentation for automated eKYC verification[cite: 33, 78].</p>
+                <a href="https://github.com/devikann/U2NET-ID-Card-Extractor" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">View Repository</a>
+            </div>
+
+            <div class="project">
+                <div class="project-title">MoodMuse AI</div>
+                <span class="tech-tag">Gemini AI</span><span class="tech-tag">Spotify API</span><span class="tech-tag">Flask</span>
+                <p>Emotion detection system that curates personalized music playlists based on user sentiment[cite: 83].</p>
+                <a href="https://github.com/devikann/MoodMuse" class="btn" style="padding: 8px 20px; font-size: 0.9rem; margin-top: 15px;">View Repository</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><i class="fas fa-users"></i> Community Impact</h2>
+            <div class="horizontal-scroll">
+                <div class="vol-card">
+                    <img src="ieee.jpg" class="vol-img" alt="IEEE Event">
+                    <div class="vol-content">
+                        <h3>IEEE Student Member</h3>
+                        <p>Coordinator for WiSP initiatives and technical workshops.</p>
+                    </div>
+                </div>
+                <div class="vol-card">
+                    <img src="nss.jpg" class="vol-img" alt="NSS Event">
+                    <div class="vol-content">
+                        <h3>NSS Volunteer</h3>
+                        <p>Dedicated volunteer for social welfare and medical camps.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Crafted for Excellence by Devika N N</p>
+        <div style="margin-top: 20px; font-size: 1.5rem; display: flex; justify-content: center; gap: 30px;">
+            <a href="https://linkedin.com/in/devikann"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/devikann"><i class="fab fa-github"></i></a>
+            <a href="mailto:devikann25@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            let particle = document.createElement('div');
+            particle.classList.add('trail-particle');
+            document.body.appendChild(particle);
+            particle.style.left = e.pageX + 'px';
+            particle.style.top = e.pageY + 'px';
+            let size = Math.random() * 10 + 5;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            setTimeout(() => { particle.remove(); }, 800);
+        });
+    </script>
+</body>
+</html>
